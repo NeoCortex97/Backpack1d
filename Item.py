@@ -6,7 +6,7 @@ class Item:
     """
     This class holds Data of an item.
     """
-    def __init__(self, name, size, symbol, amount=1):
+    def __init__(self, name: str, size: int, symbol: str, amount: int = 1):
         """
         Construct a new item.
         :param name: The name of the new item.

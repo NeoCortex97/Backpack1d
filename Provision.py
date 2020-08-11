@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from Rucksack import Rucksack
+from Backpack import Backpack
 from Item import Item
 
 
-def provision(rucksack: Rucksack):
+def provision(backpack: Backpack):
     """Fill the backpack as full as possible. It must contain one Weapon and one amunition.
-    :param rucksack: The backpack to fill
+    :param backpack: The backpack to fill
     :returns: The filled backpack.
     """
-    rucksack.pack(0, rucksack.get_item("Cola"))
-    return rucksack
+    backpack.pack(0, "Coke")
+    return backpack
 
 
-def setup_items(rucksack: Rucksack):
+def setup_items(backpack: Backpack):
     """Create some items and add them to the Item registry.
-    :param rucksack: The backpack to add the items to.
+    :param backpack: The backpack to add the items to.
     :returns: A backpack that has the new items.
     """
-    rucksack + Item("Cola",     1, "C")
-    rucksack + Item("Munition", 1, "M")
-    rucksack + Item("Pistole",  2, "P")
-    rucksack + Item("Gewehr",   4, "G")
-    rucksack + Item("Flasche",  2, "F")
-    return rucksack
+    backpack + Item("Coke", 1, "C", 1000)
+    backpack + Item("Ammo", 1, "A", 150)
+    backpack + Item("Pistol", 2, "P")
+    backpack + Item("Rifle", 4, "R")
+    backpack + Item("Water bottle", 2, "B", 50)
+    return backpack

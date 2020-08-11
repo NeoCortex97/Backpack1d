@@ -4,7 +4,7 @@ import random
 from Item import Item
 
 
-class Rucksack:
+class Backpack:
     """
     Manages an One-dimensional inventory.
     The Inventory is internally represented as an Array.
