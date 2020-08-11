@@ -48,15 +48,15 @@ class Rucksack:
         if type(other) == str and other in [item.name for item in self.items]:
             self.items = {key:val for key, val in self.items.items() if val != other}
 
-    def pack(self, start: int, typ: int):
+    def pack(self, start: int, name: str):
         """
         Try to insert an item into the inventory.
         :param start: the index you want to insert the item at.
-        :param typ: The internal id of the item you want to inset. can be obtained via get_item. This tho will likely
-        be subject to refactoring sooner or later!
+        :param name: The name of the item you want to inset.
         :return: True if it was able to insert the item
         False if it was unable to insert the item.
         """
+        typ = self.get_item(name)
         if start + self.items[typ].size >= len(self.array):
             print("Could not insert Item at {}, because it would stick out".format(start))
             return False
