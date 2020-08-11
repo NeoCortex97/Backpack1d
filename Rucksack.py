@@ -51,3 +51,6 @@ class Rucksack:
             if name == self.items[i].name:
                 return i
         return None
+
+    def is_free(self, pos):
+        return self.array is None
