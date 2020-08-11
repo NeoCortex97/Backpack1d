@@ -3,7 +3,17 @@
 
 
 class Item:
+    """
+    This class holds Data of an item.
+    """
     def __init__(self, name, size, symbol, amount=1):
+        """
+        Construct a new item.
+        :param name: The name of the new item.
+        :param size: The room that is taken up by the item
+        :param symbol: A Character that will be used as a symbol in the pretty print.
+        :param amount: The number of items that exist of this type
+        """
         self.name = name
         self.size = size
         self.symbol = symbol
