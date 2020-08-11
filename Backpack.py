@@ -12,6 +12,8 @@ class Backpack:
     If you want to add items to the Item registry you can use the + operator.
     If you want to remove an item from the registry
     """
+    items = {}
+
     def __init__(self, size: int = 10, blocks: int = 2):
         """
         Initialises the Inventory with a size and a number of random blocks
@@ -21,9 +23,8 @@ class Backpack:
         """
         self.blocks = []
         self.array = [None for _ in range(size)]
-        self.items = {}
-        if 0 not in self.items.keys():
-            self.items[0] = Item("Blockade", 1, "#", blocks)
+        if 0 not in Backpack.items.keys():
+            Backpack.items[0] = Item("Blockade", 1, "#", blocks)
         for i in range(blocks):
             index = random.randint(0, size - 1)
             self.array[index] = 0
@@ -35,18 +36,18 @@ class Backpack:
     def __str__(self):
         res = 'Symbol | Name                           | Size | Amount\n'
         res += "-------+--------------------------------+------+-------\n"
-        res += '\n'.join([str(self.items[i]) for i in self.items.keys()]) + '\n\n'
-        res += "|" + "".join([self.items[item].symbol if item is not None else " " for item in self.array]) + "|"
+        res += '\n'.join([str(Backpack.items[i]) for i in Backpack.items.keys()]) + '\n\n'
+        res += "|" + "".join([Backpack.items[item].symbol if item is not None else " " for item in self.array]) + "|"
         return res
-
+self.items
     def __add__(self, other):
         """Add an item to the item list it added to type item"""
         if type(other) == Item:
-            self.items[len(self.items.keys())] = other
+            Backpack.items[len(Backpack.items.keys())] = other
 
     def __sub__(self, other):
-        if type(other) == str and other in [item.name for item in self.items]:
-            self.items = {key:val for key, val in self.items.items() if val != other}
+        if type(other) == str and other in [item.name for item in Backpack.items]:
+            Backpack.items = {key:val for key, val in Backpack.items.items() if val != other}
 
     def pack(self, start: int, name: str):
         """
@@ -57,15 +58,15 @@ class Backpack:
         False if it was unable to insert the item.
         """
         typ = self.get_item(name)
-        if start + self.items[typ].size >= len(self.array):
+        if start + Backpack.items[typ].size >= len(self.array):
             print("Could not insert Item at {}, because it would stick out".format(start))
             return False
-        for i in range(self.items[typ].size):
+        for i in range(Backpack.items[typ].size):
             if self.array[start + i] is not None:
                 print("Could not insert Item at {}, becasue it would not fit in this space".format(start))
                 return False
         else:
-            for i in range(self.items[typ].size):
+            for i in range(Backpack.items[typ].size):
                 self.array[start + i] = typ
 
     def get_item(self, name: str):
@@ -75,8 +76,8 @@ class Backpack:
         :return: The internal id of the item in the registry of this backpack
         :rtype: int
         """
-        for i in self.items.keys():
-            if name == self.items[i].name:
+        for i in Backpack.items.keys():
+            if name == Backpack.items[i].name:
                 return i
         return None
 
@@ -96,8 +97,8 @@ class Backpack:
         :return: The item object
         :rtype: Item
         """
-        if name in self.items.keys():
-            return self.items[name]
+        if name in Backpack.items.keys():
+            return Backpack.items[name]
         else:
             return None
 
