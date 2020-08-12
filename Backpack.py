@@ -11,6 +11,7 @@ class Backpack:
     It is impossible to remove items from the inventory unless you take care of it yourself
     If you want to add items to the Item registry you can use the + operator.
     If you want to remove an item from the registry
+    This class has a convinence attribute
     """
     items = {}
 
@@ -26,7 +27,7 @@ class Backpack:
         if 0 not in Backpack.items.keys():
             Backpack.items[0] = Item("Blockade", 1, "#", blocks)
         for i in range(blocks):
-            index = random.randint(0, size - 1)
+            index = int(random.randint(0, size - 1))
             self.array[index] = 0
             self.blocks.append(index)
 
@@ -39,7 +40,7 @@ class Backpack:
         res += '\n'.join([str(Backpack.items[i]) for i in Backpack.items.keys()]) + '\n\n'
         res += "|" + "".join([Backpack.items[item].symbol if item is not None else " " for item in self.array]) + "|"
         return res
-self.items
+
     def __add__(self, other):
         """Add an item to the item list it added to type item"""
         if type(other) == Item:
@@ -56,6 +57,7 @@ self.items
         :param name: The name of the item you want to inset.
         :return: True if it was able to insert the item
         False if it was unable to insert the item.
+        :rtype: bool
         """
         typ = self.get_item(name)
         if start + Backpack.items[typ].size >= len(self.array):
@@ -81,7 +83,7 @@ self.items
                 return i
         return None
 
-    def is_free(self, pos):
+    def is_free(self, pos: int):
         """
         Check if a position in the inventory is occupied.
         :param pos: Position to test.
@@ -90,7 +92,7 @@ self.items
         """
         return self.array[pos] is None
 
-    def fetch_item(self, name):
+    def fetch_item(self, name: str):
         """
         Get an item object from the backpack
         :param name: Item name

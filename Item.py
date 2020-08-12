@@ -12,7 +12,7 @@ class Item:
         :param name: The name of the new item.
         :param size: The room that is taken up by the item
         :param symbol: A Character that will be used as a symbol in the pretty print.
-        :param amount: The number of items that exist of this type
+        :param amount: The number of items that exist of this type. This defaults to one
         """
         self.name = name
         self.size = size
