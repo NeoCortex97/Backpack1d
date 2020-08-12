@@ -42,7 +42,7 @@ class Backpack:
         res = 'Symbol | Name                           | Size | Amount\n'
         res += "-------+--------------------------------+------+-------\n"
         res += '\n'.join([str(Backpack.items[i]) for i in Backpack.items.keys()]) + '\n\n'
-        res += "|" + "".join([Backpack.items[item].symbol if item is not None else " " for item in self.array]) + "|"
+        res += "Backpack: |" + "".join([Backpack.items[item].symbol if item is not None else " " for item in self.array]) + "|"
         return res
 
     def __add__(self, other):
