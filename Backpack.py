@@ -78,7 +78,7 @@ class Backpack:
             return False
         for i in range(Backpack.items[typ].size):
             if self.array[start + i] is not None:
-                print("Could not insert Item at {}, becasue it would not fit in this space".format(start))
+                print("Could not insert {1} at {0}, becasue it would not fit in this space".format(start, name))
                 return False
         else:
             Backpack.items[typ].amount -= 1
@@ -134,4 +134,4 @@ class Backpack:
         :return: list of strings that contain item names
         :rtype: list
         """
-        return [item.name for item in Backpack.items.values()]
+        return [item.name for item in Backpack.items.values()][1:]
