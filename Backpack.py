@@ -47,7 +47,8 @@ class Backpack:
 
     def __add__(self, other):
         """
-        Add an item to the item list it added to type item
+        Add an item to the item list it added to type item.
+        Non functional atm
         """
         if type(other) == Item:
             Backpack.items[len(Backpack.items.keys())] = other
@@ -55,6 +56,9 @@ class Backpack:
     def __sub__(self, other):
         if type(other) == str and other in [item.name for item in Backpack.items]:
             Backpack.items = {key:val for key, val in Backpack.items.items() if val != other}
+
+    def __getitem__(self, item):
+        return self.array[item]
 
     def pack(self, start: int, name: str):
         """
@@ -124,3 +128,10 @@ class Backpack:
         :rtype: bool
         """
         return self.array.count(None) == 0
+
+    def get_item_names(self):
+        """
+        :return: list of strings that contain item names
+        :rtype: list
+        """
+        return [item.name for item in Backpack.items.values()]
