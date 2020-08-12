@@ -21,3 +21,6 @@ class Item:
 
     def __str__(self):
         return "{:6} | {:30} | {:4} | {:5}".format(self.symbol, self.name, self.size, self.amount)
+
+    def __bool__(self):
+        return self.amount > 0
