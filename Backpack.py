@@ -70,6 +70,7 @@ class Backpack:
                 print("Could not insert Item at {}, becasue it would not fit in this space".format(start))
                 return False
         else:
+            Backpack.items[typ].amount -= 1
             for i in range(Backpack.items[typ].size):
                 self.array[start + i] = typ
 
