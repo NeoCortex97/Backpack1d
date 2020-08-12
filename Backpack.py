@@ -42,7 +42,9 @@ class Backpack:
         return res
 
     def __add__(self, other):
-        """Add an item to the item list it added to type item"""
+        """
+        Add an item to the item list it added to type item
+        """
         if type(other) == Item:
             Backpack.items[len(Backpack.items.keys())] = other
 
@@ -89,6 +91,7 @@ class Backpack:
         :param pos: Position to test.
         :return: True if the position is empty.
         False if it is not.
+        :rtype: bool
         """
         return self.array[pos] is None
 
@@ -99,8 +102,9 @@ class Backpack:
         :return: The item object
         :rtype: Item
         """
-        if name in Backpack.items.keys():
-            return Backpack.items[name]
+        key = self.get_item(name)
+        if key in Backpack.items.keys():
+            return Backpack.items[key]
         else:
             return None
 
@@ -109,5 +113,6 @@ class Backpack:
         Check if the inventory is already full
         :return: True if the inventory is full.
         False if it isn't.
+        :rtype: bool
         """
         return self.array.count(None) == 0
