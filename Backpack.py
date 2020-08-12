@@ -35,6 +35,10 @@ class Backpack:
         return len(self.array)
 
     def __str__(self):
+        """
+        :return: A string containing a list all items that could be packed into the backpack and the current state of the backpack.
+        :rtype: str
+        """
         res = 'Symbol | Name                           | Size | Amount\n'
         res += "-------+--------------------------------+------+-------\n"
         res += '\n'.join([str(Backpack.items[i]) for i in Backpack.items.keys()]) + '\n\n'

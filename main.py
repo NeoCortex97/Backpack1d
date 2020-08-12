@@ -5,8 +5,11 @@ from Provision import provision, setup_items
 
 
 def main():
+    print("Story: You arrived at an old shelter that still seems tohave some usable supplies.")
+    print("       After some looking around you find the following supplies that should be usable")
     backpack = Backpack()
     backpack = setup_items(backpack)
+    print(backpack)
     backpack = provision(backpack)
     print(backpack)
 
