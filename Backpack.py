@@ -73,7 +73,7 @@ class Backpack:
         if Backpack.items[typ].amount <= 0:
             print("Couldn't find any more {}".format(name))
             return False
-        if start + Backpack.items[typ].size >= len(self.array):
+        if start + Backpack.items[typ].size > len(self.array):
             print("Could not insert {1} at {0}, because it would stick out".format(start, name))
             return False
         for i in range(Backpack.items[typ].size):

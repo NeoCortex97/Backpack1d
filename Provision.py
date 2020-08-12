@@ -9,7 +9,8 @@ def provision(backpack: Backpack):
     :param backpack: The backpack to fill
     :returns: The filled backpack.
     """
-    backpack.pack(0, "Coke")
+    for i in range(len(backpack)):
+        backpack.pack(i, "Coke")
     return backpack
 
 
