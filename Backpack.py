@@ -66,6 +66,9 @@ class Backpack:
         :rtype: bool
         """
         typ = self.get_item(name)
+        if Backpack.items[typ].amount <= 0:
+            print("Couldn't find any more {}".format(name))
+            return False
         if start + Backpack.items[typ].size >= len(self.array):
             print("Could not insert Item at {}, because it would stick out".format(start))
             return False
